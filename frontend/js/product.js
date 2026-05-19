@@ -1,3 +1,4 @@
+// variables globales de la page produit
 let produitActuel = null;
 let indexCarousel = 0;
 let quantite = 1;
@@ -15,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
   updateBadges();
 });
 
+// charge le produit depuis l'api avec l'id dans l'url
 async function chargerProduit(id) {
   produitActuel = await getProduit(id);
   afficherProduit(produitActuel);
   chargerSimilaires(produitActuel);
 }
 
+// affiche toutes les infos du produit dans la page
 function afficherProduit(p) {
   document.title = p.nom + ' — YSHOPPP';
   document.getElementById('product-categorie').textContent = p.categorie;
@@ -110,6 +113,7 @@ function afficherProduit(p) {
   });
 }
 
+// crée le carrousel avec toutes les images du produit
 function construireCarousel(images) {
   const track = document.getElementById('carousel-track');
   const dots = document.getElementById('carousel-dots');
@@ -131,6 +135,7 @@ function construireCarousel(images) {
   });
 }
 
+// passe à l'image suivante ou précédente dans le carrousel
 function allerSlide(index) {
   const slides = document.querySelectorAll('.carousel-slide');
   if (slides.length === 0) return;
@@ -157,6 +162,7 @@ function selectionnerCouleur(couleur, btn) {
   btn.classList.add('active');
 }
 
+// ajoute le produit au panier dans le localstorage
 function ajouterAuPanier(p) {
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
   let trouve = false;
@@ -205,6 +211,7 @@ function toggleFavori(id, btn) {
   updateBadges();
 }
 
+// charge les produits de la même catégorie pour les afficher en bas
 async function chargerSimilaires(produit) {
   const tous = await getAllProduits();
   const similaires = [];

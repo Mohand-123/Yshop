@@ -4,14 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('btn-checkout').addEventListener('click', commander);
 });
 
+// récupère le panier depuis le localstorage
 function getPanier() {
   return JSON.parse(localStorage.getItem('panier') || '[]');
 }
 
+// sauvegarde le panier dans le localstorage
 function sauvegarderPanier(panier) {
   localStorage.setItem('panier', JSON.stringify(panier));
 }
 
+// affiche tous les articles du panier et calcule le total
 function afficherPanier() {
   const panier = getPanier();
   const container = document.getElementById('cart-items');
@@ -57,6 +60,7 @@ function afficherPanier() {
   document.getElementById('cart-total').textContent = formatPrix(total);
 }
 
+// augmente ou diminue la quantité d'un article, si ça tombe à 0 on le supprime
 function changerQuantite(id, couleur, delta) {
   const panier = getPanier();
 
@@ -91,6 +95,7 @@ function supprimerArticle(id, couleur) {
   showToast('Article supprimé du panier');
 }
 
+// valide la commande et met à jour le stock de chaque produit
 async function commander() {
   const panier = getPanier();
   if (panier.length === 0) return;

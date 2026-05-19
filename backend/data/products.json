@@ -485,6 +485,90 @@
         "poids": "263 kg",
         "annee": 2024
       }
+    },
+    {
+      "id": "mt-07",
+      "reference": "MT-07-2024",
+      "nom": "Yamaha MT-07",
+      "description": "La Yamaha MT-07 est la naked accessible par excellence, alliant plaisir de conduite et polyvalence au quotidien. Son bicylindre parallèle 689cc offre un couple généreux et progressif, parfaitement adapté à une utilisation urbaine et sportive. Son poids contenu et sa selle basse la rendent accessible à de nombreux gabarits. Elle est idéale comme première grosse cylindrée pour progresser.",
+      "stock": 8,
+      "prix": 8299,
+      "devise": "EUR",
+      "images": ["/images/mt-07-1.jpg", "/images/mt-07-2.jpg", "/images/mt-07-3.jpg"],
+      "categorie": "Naked",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Naked",
+        "couleurs": ["Bleu Petrol", "Noir", "Gris Matte"],
+        "permis": ["A"],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "184 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "mt-09",
+      "reference": "MT-09-2024",
+      "nom": "Yamaha MT-09",
+      "description": "La Yamaha MT-09 est la naked la plus vendue d'Europe. Son triple cylindres 890cc ultra-caractériel offre des sensations uniques avec un couple disponible à tout régime. Légère, agile et diablement efficace, elle séduit aussi bien les débutants que les pilotes confirmés. Son électronique avec 3 cartographies moteur s'adapte parfaitement à tous les styles de conduite sur route.",
+      "stock": 6,
+      "prix": 10999,
+      "devise": "EUR",
+      "images": ["/images/mt-09-1.jpg", "/images/mt-09-2.jpg", "/images/mt-09-3.jpg"],
+      "categorie": "Naked",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Naked",
+        "couleurs": ["Cyan Storm", "Noir Midnight", "Gris"],
+        "permis": ["A"],
+        "cylindree": "890 cc",
+        "puissance": "119 ch",
+        "poids": "193 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "mt-10",
+      "reference": "MT-10-2024",
+      "nom": "Yamaha MT-10",
+      "description": "La Yamaha MT-10 est le porte-drapeau de la famille MT, le Dark Side of Japan. Animée par le moteur de la R1 en version streetfighter, elle délivre 166 chevaux dans un châssis nerveux et agile. Son design anguleux et menaçant avec ses phares LED iconiques en fait une présence absolue sur la route. L'électronique complète assure la maîtrise totale de cette puissance brute.",
+      "stock": 3,
+      "prix": 16999,
+      "devise": "EUR",
+      "images": ["/images/mt-10-1.jpg", "/images/mt-10-2.jpg", "/images/mt-10-3.jpg"],
+      "categorie": "Naked",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Naked",
+        "couleurs": ["Cyan Storm", "Noir Midnight", "Gris Storm"],
+        "permis": ["A"],
+        "cylindree": "998 cc",
+        "puissance": "166 ch",
+        "poids": "212 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "tracer-9-gt",
+      "reference": "TRACER9GT-2024",
+      "nom": "Yamaha Tracer 9 GT",
+      "description": "La Yamaha Tracer 9 GT est le sport-tourer polyvalent par excellence, taillé pour les longs trajets comme les routes sportives. Basée sur le moteur triple cylindres de la MT-09, elle offre 119 chevaux dans un cadre équipé de série de sacoches latérales, d'un écran TFT et de suspensions réglables. Le compagnon idéal pour les voyages au long cours sans sacrifier le plaisir de conduite.",
+      "stock": 4,
+      "prix": 14999,
+      "devise": "EUR",
+      "images": ["/images/mt-09-1.jpg", "/images/mt-09-2.jpg", "/images/mt-09-3.jpg"],
+      "categorie": "Sport Touring",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Sport Tourer",
+        "couleurs": ["Gris Iconic", "Bleu", "Noir"],
+        "permis": ["A"],
+        "cylindree": "890 cc",
+        "puissance": "119 ch",
+        "poids": "220 kg",
+        "annee": 2024
+      }
     }
   ]
 }

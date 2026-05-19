@@ -1,9 +1,11 @@
+// les variables globales pour stocker les produits et les filtres
 let tousLesProduits = [];
 let categoriesActives = [];
 let permisActifs = [];
 let prixMax = 25000;
 let triActif = 'default';
 
+// quand la page est chargée on lance tout
 document.addEventListener('DOMContentLoaded', function() {
   chargerProduits();
   updateBadges();
@@ -22,12 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('btn-reset').addEventListener('click', reinitialiserFiltres);
 });
 
+// on récupère tous les produits depuis l'API et on affiche
 async function chargerProduits() {
   tousLesProduits = await getAllProduits();
   construireFiltres();
   afficherProduits();
 }
 
+// on crée les filtres dynamiquement selon les produits qu'on a
 function construireFiltres() {
   const categories = [];
   for (let i = 0; i < tousLesProduits.length; i++) {
@@ -101,6 +105,7 @@ function reinitialiserFiltres() {
   afficherProduits();
 }
 
+// filtre et trie les produits puis les affiche dans la grille
 function afficherProduits() {
   const produitsFiltres = [];
   for (let i = 0; i < tousLesProduits.length; i++) {
@@ -149,6 +154,7 @@ function afficherProduits() {
   }
 }
 
+// génère le html d'une carte produit
 function creerCarteHTML(p) {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const estFavori = favoris.indexOf(p.id) !== -1;
@@ -176,6 +182,7 @@ function creerCarteHTML(p) {
   return html;
 }
 
+// ajoute ou enlève un favori quand on clique sur le coeur
 function toggleFavoriCarte(id, btn) {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const index = favoris.indexOf(id);
@@ -195,6 +202,7 @@ function toggleFavoriCarte(id, btn) {
   updateBadges();
 }
 
+// met à jour les chiffres sur les icones panier et favoris en haut
 function updateBadges() {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');

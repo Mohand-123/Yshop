@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
   updateBadges();
 });
 
+// retourne la liste des ids favoris depuis le localstorage
 function getFavoris() {
   return JSON.parse(localStorage.getItem('favoris') || '[]');
 }
 
+// charge les produits favoris depuis l'api et les affiche
 async function chargerFavoris() {
   const ids = getFavoris();
   const grid = document.getElementById('favorites-grid');
@@ -44,6 +46,7 @@ async function chargerFavoris() {
   }
 }
 
+// enlève un produit des favoris et recharge la liste
 function supprimerFavori(id) {
   const favoris = getFavoris();
   const newFavoris = [];
