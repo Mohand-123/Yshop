@@ -1,15 +1,12 @@
-// Chargement de la page favoris
 document.addEventListener('DOMContentLoaded', function() {
   chargerFavoris();
   updateBadges();
 });
 
-// Récupère les ids des favoris
 function getFavoris() {
   return JSON.parse(localStorage.getItem('favoris') || '[]');
 }
 
-// Charge et affiche les produits favoris
 async function chargerFavoris() {
   const ids = getFavoris();
   const grid = document.getElementById('favorites-grid');
@@ -47,7 +44,6 @@ async function chargerFavoris() {
   }
 }
 
-// Supprime un favori
 function supprimerFavori(id) {
   const favoris = getFavoris();
   const newFavoris = [];
@@ -60,7 +56,6 @@ function supprimerFavori(id) {
   updateBadges();
 }
 
-// Ajoute un favori au panier
 function ajouterAuPanier(id, nom, prix, devise, image, couleur) {
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
   let trouve = false;
@@ -81,7 +76,6 @@ function ajouterAuPanier(id, nom, prix, devise, image, couleur) {
   updateBadges();
 }
 
-// Met à jour les badges du header
 function updateBadges() {
   const favoris = getFavoris();
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');

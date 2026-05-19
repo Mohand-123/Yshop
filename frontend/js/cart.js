@@ -1,21 +1,17 @@
-// Chargement de la page panier
 document.addEventListener('DOMContentLoaded', function() {
   afficherPanier();
   updateBadges();
   document.getElementById('btn-checkout').addEventListener('click', commander);
 });
 
-// Récupère le panier depuis le localStorage
 function getPanier() {
   return JSON.parse(localStorage.getItem('panier') || '[]');
 }
 
-// Sauvegarde le panier dans le localStorage
 function sauvegarderPanier(panier) {
   localStorage.setItem('panier', JSON.stringify(panier));
 }
 
-// Affiche les articles du panier
 function afficherPanier() {
   const panier = getPanier();
   const container = document.getElementById('cart-items');
@@ -61,7 +57,6 @@ function afficherPanier() {
   document.getElementById('cart-total').textContent = formatPrix(total);
 }
 
-// Modifie la quantité d'un article
 function changerQuantite(id, couleur, delta) {
   const panier = getPanier();
 
@@ -80,7 +75,6 @@ function changerQuantite(id, couleur, delta) {
   updateBadges();
 }
 
-// Supprime un article du panier
 function supprimerArticle(id, couleur) {
   const panier = getPanier();
   const nouveauPanier = [];
@@ -97,7 +91,6 @@ function supprimerArticle(id, couleur) {
   showToast('Article supprimé du panier');
 }
 
-// Valide la commande et met à jour les stocks
 async function commander() {
   const panier = getPanier();
   if (panier.length === 0) return;
@@ -126,7 +119,6 @@ async function commander() {
   updateBadges();
 }
 
-// Met à jour les badges du header
 function updateBadges() {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const panier = getPanier();

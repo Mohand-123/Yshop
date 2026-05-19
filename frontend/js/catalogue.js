@@ -4,7 +4,6 @@ let permisActifs = [];
 let prixMax = 25000;
 let triActif = 'default';
 
-// Chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
   chargerProduits();
   updateBadges();
@@ -23,16 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('btn-reset').addEventListener('click', reinitialiserFiltres);
 });
 
-// Charge tous les produits depuis l'API
 async function chargerProduits() {
   tousLesProduits = await getAllProduits();
   construireFiltres();
   afficherProduits();
 }
 
-// Crée les cases à cocher de filtre dynamiquement
 function construireFiltres() {
-  // Récupérer les catégories sans doublons
   const categories = [];
   for (let i = 0; i < tousLesProduits.length; i++) {
     const cat = tousLesProduits[i].categorie;
@@ -41,7 +37,6 @@ function construireFiltres() {
     }
   }
 
-  // Récupérer les permis sans doublons
   const permis = [];
   for (let i = 0; i < tousLesProduits.length; i++) {
     const permisProduit = tousLesProduits[i].caracteristiques.permis;
@@ -52,14 +47,12 @@ function construireFiltres() {
     }
   }
 
-  // Afficher les checkboxes catégories
   const catContainer = document.getElementById('filter-categories');
   for (let i = 0; i < categories.length; i++) {
     const cat = categories[i];
     catContainer.innerHTML += '<label class="filter-checkbox"><input type="checkbox" value="' + cat + '" onchange="toggleCategorie(\'' + cat + '\', this.checked)" /> ' + cat + '</label>';
   }
 
-  // Afficher les checkboxes permis
   const permisContainer = document.getElementById('filter-permis');
   for (let i = 0; i < permis.length; i++) {
     const pm = permis[i];
@@ -67,7 +60,6 @@ function construireFiltres() {
   }
 }
 
-// Ajoute ou enlève une catégorie du filtre
 function toggleCategorie(cat, active) {
   if (active) {
     categoriesActives.push(cat);
@@ -81,7 +73,6 @@ function toggleCategorie(cat, active) {
   afficherProduits();
 }
 
-// Ajoute ou enlève un permis du filtre
 function togglePermis(pm, active) {
   if (active) {
     permisActifs.push(pm);
@@ -95,7 +86,6 @@ function togglePermis(pm, active) {
   afficherProduits();
 }
 
-// Remet tous les filtres à zéro
 function reinitialiserFiltres() {
   categoriesActives = [];
   permisActifs = [];
@@ -111,19 +101,15 @@ function reinitialiserFiltres() {
   afficherProduits();
 }
 
-// Filtre, trie et affiche les produits
 function afficherProduits() {
-  // Filtrage
   const produitsFiltres = [];
   for (let i = 0; i < tousLesProduits.length; i++) {
     const p = tousLesProduits[i];
 
-    // Filtre catégorie
     if (categoriesActives.length > 0 && categoriesActives.indexOf(p.categorie) === -1) {
       continue;
     }
 
-    // Filtre permis
     if (permisActifs.length > 0) {
       let permisOk = false;
       for (let j = 0; j < p.caracteristiques.permis.length; j++) {
@@ -134,13 +120,11 @@ function afficherProduits() {
       if (!permisOk) continue;
     }
 
-    // Filtre prix
     if (p.prix > prixMax) continue;
 
     produitsFiltres.push(p);
   }
 
-  // Tri
   if (triActif === 'prix-asc') {
     produitsFiltres.sort(function(a, b) { return a.prix - b.prix; });
   } else if (triActif === 'prix-desc') {
@@ -151,7 +135,6 @@ function afficherProduits() {
     produitsFiltres.sort(function(a, b) { return b.nom.localeCompare(a.nom); });
   }
 
-  // Affichage
   const grid = document.getElementById('products-grid');
   document.getElementById('result-count').textContent = produitsFiltres.length + ' moto(s)';
 
@@ -166,7 +149,6 @@ function afficherProduits() {
   }
 }
 
-// Crée le HTML d'une carte produit
 function creerCarteHTML(p) {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const estFavori = favoris.indexOf(p.id) !== -1;
@@ -194,7 +176,6 @@ function creerCarteHTML(p) {
   return html;
 }
 
-// Ajoute ou retire un produit des favoris depuis le catalogue
 function toggleFavoriCarte(id, btn) {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const index = favoris.indexOf(id);
@@ -214,7 +195,6 @@ function toggleFavoriCarte(id, btn) {
   updateBadges();
 }
 
-// Met à jour les badges du header
 function updateBadges() {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
