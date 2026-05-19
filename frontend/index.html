@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YSHOP3 — Motos Yamaha</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Y<span>SHOP</span>3</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Catalogue</a>
+        <a href="favorites.html" class="nav-link">Favoris <span class="badge" id="badge-favoris">0</span></a>
+        <a href="cart.html" class="nav-link">Panier <span class="badge" id="badge-panier">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="catalogue-layout">
+
+    <!-- Sidebar filtres -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Filtres</h2>
+
+      <div class="filter-group">
+        <label class="filter-label">Catégorie</label>
+        <div class="filter-options" id="filter-categories"></div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Permis</label>
+        <div class="filter-options" id="filter-permis"></div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Prix maximum</label>
+        <input type="range" id="filter-prix" min="0" max="25000" step="500" value="25000" />
+        <span class="prix-display" id="prix-display">25 000 €</span>
+      </div>
+
+      <button class="btn-reset" id="btn-reset">Réinitialiser</button>
+    </aside>
+
+    <!-- Contenu catalogue -->
+    <section class="catalogue-content">
+      <div class="catalogue-header">
+        <p class="result-count" id="result-count">24 motos</p>
+        <select class="sort-select" id="sort-select">
+          <option value="default">Trier par défaut</option>
+          <option value="prix-asc">Prix croissant</option>
+          <option value="prix-desc">Prix décroissant</option>
+          <option value="nom-asc">Nom A → Z</option>
+          <option value="nom-desc">Nom Z → A</option>
+        </select>
+      </div>
+      <div class="products-grid" id="products-grid">
+        <p class="loading">Chargement...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 YSHOP3 — Tous droits réservés</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/catalogue.js"></script>
+</body>
+</html>

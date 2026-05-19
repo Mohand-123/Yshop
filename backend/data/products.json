@@ -1,0 +1,490 @@
+{
+  "produits": [
+    {
+      "id": "yzf-r1",
+      "reference": "YZF-R1-2024",
+      "nom": "Yamaha YZF-R1",
+      "description": "La Yamaha YZF-R1 est la référence ultime des supersports routières. Héritière directe de la moto de MotoGP, elle embarque une technologie de compétition avec son moteur 4 cylindres en ligne de 999cc développant 200 chevaux. Son châssis Deltabox en aluminium et son électronique de pointe offrent des performances extraordinaires sur circuit comme sur route.",
+      "stock": 4,
+      "prix": 21999,
+      "devise": "EUR",
+      "images": [
+        "/images/yzf-r1-1.jpg",
+        "/images/yzf-r1-2.jpg",
+        "/images/yzf-r1-3.jpg"
+      ],
+      "categorie": "Sport",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Sportive",
+        "couleurs": [
+          "Bleu Racing",
+          "Noir"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "999 cc",
+        "puissance": "200 ch",
+        "poids": "201 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yzf-r6",
+      "reference": "YZF-R6-2024",
+      "nom": "Yamaha YZF-R6",
+      "description": "La Yamaha YZF-R6 est une supersport 600cc iconique, symbole de la domination Yamaha en Supersport World Championship. Son moteur 4 cylindres haute révolution pousse jusqu'à 17 500 tr/min pour des sensations incomparables. Sa géométrie de châssis inspirée de la R1 lui confère une précision de pilotage chirurgicale, faisant d'elle la référence de sa catégorie.",
+      "stock": 3,
+      "prix": 14999,
+      "devise": "EUR",
+      "images": [
+        "/images/yzf-r6-1.jpg",
+        "/images/yzf-r6-2.jpg",
+        "/images/yzf-r6-3.jpg"
+      ],
+      "categorie": "Sport",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Sportive",
+        "couleurs": [
+          "Bleu Racing",
+          "Noir"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "599 cc",
+        "puissance": "118 ch",
+        "poids": "193 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yzf-r3",
+      "reference": "YZF-R3-2024",
+      "nom": "Yamaha YZF-R3",
+      "description": "La Yamaha YZF-R3 est la porte d'entrée idéale dans l'univers des supersports Yamaha. Son bicylindre 321cc parallèle offre un équilibre parfait entre performances et accessibilité. Compatible permis A2, elle partage l'ADN esthétique de la R1 avec son carénage aérodynamique profilé et ses freins à disque performants. Une moto parfaite pour progresser en toute sécurité.",
+      "stock": 7,
+      "prix": 5999,
+      "devise": "EUR",
+      "images": [
+        "/images/yzf-r3-1.jpg",
+        "/images/yzf-r3-2.jpg",
+        "/images/yzf-r3-3.jpg"
+      ],
+      "categorie": "Sport",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Sportive",
+        "couleurs": [
+          "Bleu Racing",
+          "Noir",
+          "Blanc"
+        ],
+        "permis": [
+          "A2",
+          "A"
+        ],
+        "cylindree": "321 cc",
+        "puissance": "42 ch",
+        "poids": "169 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yzf-r125",
+      "reference": "YZF-R125-2024",
+      "nom": "Yamaha YZF-R125",
+      "description": "La Yamaha YZF-R125 est le rêve de tout jeune motard qui débute. Accessible dès le permis A1, cette sportive 125cc reprend les codes stylistiques des grandes R de la gamme avec un design agressif et soigné. Son monocylindre 125cc offre des performances adaptées aux débutants tout en préparant au pilotage sportif. Légère et maniable, elle est idéale pour apprendre.",
+      "stock": 10,
+      "prix": 4499,
+      "devise": "EUR",
+      "images": [
+        "/images/yzf-r125-1.jpg",
+        "/images/yzf-r125-2.jpg",
+        "/images/yzf-r125-3.jpg"
+      ],
+      "categorie": "Sport",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Sportive",
+        "couleurs": [
+          "Bleu Racing",
+          "Noir"
+        ],
+        "permis": [
+          "A1",
+          "A2",
+          "A"
+        ],
+        "cylindree": "125 cc",
+        "puissance": "15 ch",
+        "poids": "142 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "tenere-700",
+      "reference": "TEN700-2024",
+      "nom": "Yamaha Ténéré 700",
+      "description": "La Yamaha Ténéré 700 perpétue une longue tradition d'aventure et d'exploration qui a débuté dans le désert du Sahara avec le Paris-Dakar. Son bicylindre CP2 de 689cc offre le caractère et la robustesse nécessaires pour affronter tous les terrains. Légère et maniable, elle excelle aussi bien sur les pistes de terra que sur les routes sinueuses. L'aventure à l'état pur.",
+      "stock": 5,
+      "prix": 10999,
+      "devise": "EUR",
+      "images": [
+        "/images/tenere-700-1.jpg",
+        "/images/tenere-700-2.jpg",
+        "/images/tenere-700-3.jpg"
+      ],
+      "categorie": "Adventure",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Trail",
+        "couleurs": [
+          "Blanc Rally",
+          "Bleu",
+          "Gris"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "204 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "tenere-700-world-raid",
+      "reference": "TEN700WR-2024",
+      "nom": "Yamaha Ténéré 700 World Raid",
+      "description": "La Yamaha Ténéré 700 World Raid est la version ultime du trail de Yamaha, conçue pour les explorateurs les plus exigeants. Elle embarque un réservoir de 23 litres pour une autonomie accrue, des suspensions long débattement entièrement réglables et une protection renforcée. Tout ce qu'il faut pour partir à l'aventure sans limite, des pistes sahariennes aux chemins alpins.",
+      "stock": 2,
+      "prix": 13999,
+      "devise": "EUR",
+      "images": [
+        "/images/tenere-700-wr-1.jpg",
+        "/images/tenere-700-wr-2.jpg",
+        "/images/tenere-700-wr-3.jpg"
+      ],
+      "categorie": "Adventure",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Trail",
+        "couleurs": [
+          "Blanc/Bleu Rally",
+          "Gris"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "220 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "super-tenere-1200",
+      "reference": "STEN1200-2024",
+      "nom": "Yamaha Super Ténéré 1200",
+      "description": "La Yamaha Super Ténéré 1200 est le grand trail de tourisme par excellence, taillé pour les voyages au long cours. Son bicylindre à plat de 1199cc offre une puissance monumentale couplée à une douceur de fonctionnement incomparable. Équipée de série de sacoches latérales, d'une protection vent généreuse, elle avale les kilomètres en toute sérénité peu importe les conditions.",
+      "stock": 2,
+      "prix": 18999,
+      "devise": "EUR",
+      "images": [
+        "/images/super-tenere-1.jpg",
+        "/images/super-tenere-2.jpg",
+        "/images/super-tenere-3.jpg"
+      ],
+      "categorie": "Adventure",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Grand Trail",
+        "couleurs": [
+          "Blanc/Gris",
+          "Noir"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "1199 cc",
+        "puissance": "113 ch",
+        "poids": "281 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "xsr-900",
+      "reference": "XSR900-2024",
+      "nom": "Yamaha XSR900",
+      "description": "La Yamaha XSR900 est une néo-rétro qui allie le design des années 70 à la technologie moderne la plus avancée. Animée par le triple cylindres de la MT-09, elle offre des performances de supernaked dans un habillage rétro soigné et intemporel. Ses finitions de haute qualité et son attention au détail en font un objet d'art roulant. Pour ceux qui refusent de choisir entre style et performance.",
+      "stock": 4,
+      "prix": 11999,
+      "devise": "EUR",
+      "images": [
+        "/images/xsr-900-1.jpg",
+        "/images/xsr-900-2.jpg",
+        "/images/xsr-900-3.jpg"
+      ],
+      "categorie": "Retro",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Néo-Rétro",
+        "couleurs": [
+          "Gris",
+          "Noir",
+          "Rouge"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "890 cc",
+        "puissance": "119 ch",
+        "poids": "193 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "xsr-700",
+      "reference": "XSR700-2024",
+      "nom": "Yamaha XSR700",
+      "description": "La Yamaha XSR700 marie avec élégance le design rétro classique et les performances d'une naked moderne. Son bicylindre 689cc de la MT-07 propulse ce bel objet avec tonicité et plaisir. La finition soignée avec ses détails chromés et ses roues à bâtons lui confèrent un charme irrésistible. Elle séduit les motards qui veulent affirmer leur personnalité tout en profitant d'une mécanique fiable.",
+      "stock": 5,
+      "prix": 8999,
+      "devise": "EUR",
+      "images": [
+        "/images/xsr-700-1.jpg",
+        "/images/xsr-700-2.jpg",
+        "/images/xsr-700-3.jpg"
+      ],
+      "categorie": "Retro",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Néo-Rétro",
+        "couleurs": [
+          "Bleu",
+          "Noir",
+          "Gris"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "188 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "xsr-125",
+      "reference": "XSR125-2024",
+      "nom": "Yamaha XSR125",
+      "description": "La Yamaha XSR125 est le modèle rétro accessible de la gamme, permettant aux débutants de profiter d'un style néo-rétro élégant dès le permis A1. Son monocylindre 125cc est fiable et économique, parfait pour les trajets urbains quotidiens. Son gabarit compact et sa légèreté en font une moto particulièrement facile à manier en ville, sans sacrifier le style et l'élégance.",
+      "stock": 11,
+      "prix": 4699,
+      "devise": "EUR",
+      "images": [
+        "/images/xsr-125-1.jpg",
+        "/images/xsr-125-2.jpg",
+        "/images/xsr-125-3.jpg"
+      ],
+      "categorie": "Retro",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Néo-Rétro",
+        "couleurs": [
+          "Bleu",
+          "Noir"
+        ],
+        "permis": [
+          "A1",
+          "A2",
+          "A"
+        ],
+        "cylindree": "125 cc",
+        "puissance": "15 ch",
+        "poids": "138 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yz-450f",
+      "reference": "YZ450F-2024",
+      "nom": "Yamaha YZ450F",
+      "description": "La Yamaha YZ450F est la référence absolue du motocross 450, héritière d'un palmarès exceptionnel en championnat du monde. Son monocylindre 449cc à injection de carburant offre une puissance explosive et un couple phénoménal pour dévorer les obstacles. Le cadre en aluminium à longeron central garantit une rigidité optimale tout en maintenant un poids minimal. La moto des champions.",
+      "stock": 3,
+      "prix": 9499,
+      "devise": "EUR",
+      "images": [
+        "/images/yz-450f-1.jpg",
+        "/images/yz-450f-2.jpg",
+        "/images/yz-450f-3.jpg"
+      ],
+      "categorie": "Motocross",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Motocross",
+        "couleurs": [
+          "Bleu Yamaha"
+        ],
+        "permis": [
+          "Hors route"
+        ],
+        "cylindree": "449 cc",
+        "puissance": "63 ch",
+        "poids": "110 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yz-125",
+      "reference": "YZ125-2024",
+      "nom": "Yamaha YZ125",
+      "description": "La Yamaha YZ125 est une légende vivante du motocross 2 temps, une catégorie qui connaît un regain d'intérêt considérable. Son monocylindre 125cc 2 temps offre une montée en régime inoubliable et des sensations pures que les 4 temps ne peuvent pas procurer. Légère et agile, elle révèle toute l'essence du pilotage hors route. Le choix des puristes et des connaisseurs du motocross.",
+      "stock": 5,
+      "prix": 5999,
+      "devise": "EUR",
+      "images": [
+        "/images/yz-125-1.jpg",
+        "/images/yz-125-2.jpg",
+        "/images/yz-125-3.jpg"
+      ],
+      "categorie": "Motocross",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Motocross 2T",
+        "couleurs": [
+          "Bleu Yamaha"
+        ],
+        "permis": [
+          "Hors route"
+        ],
+        "cylindree": "125 cc",
+        "puissance": "36 ch",
+        "poids": "96 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "wr-450f",
+      "reference": "WR450F-2024",
+      "nom": "Yamaha WR450F",
+      "description": "La Yamaha WR450F est la version enduro de la légendaire YZ450F, immatriculable sur route pour une liberté totale d'exploration. Son moteur 449cc dispose d'une cartographie spécifique enduro offrant un couple disponible dès les bas régimes, essentiel sur les terrains accidentés. Équipée d'un éclairage homologué route et d'un compteur kilométrique, elle est prête pour toutes les aventures.",
+      "stock": 3,
+      "prix": 9999,
+      "devise": "EUR",
+      "images": [
+        "/images/wr-450f-1.jpg",
+        "/images/wr-450f-2.jpg",
+        "/images/wr-450f-3.jpg"
+      ],
+      "categorie": "Enduro",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Enduro",
+        "couleurs": [
+          "Bleu Yamaha"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "449 cc",
+        "puissance": "63 ch",
+        "poids": "118 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "xv950-bolt",
+      "reference": "XV950-2024",
+      "nom": "Yamaha XV950 Bolt",
+      "description": "La Yamaha XV950 Bolt est un bobber custom américain dans l'âme, taillé pour les longues routes droites et les couchers de soleil. Son bicylindre en V de 942cc, calé à 60°, bat au rythme d'un V-Twin typique avec son caractère incomparable. Son style épuré de bobber avec sa selle basse et son réservoir en goutte d'eau en fait l'une des plus belles motos customs du marché.",
+      "stock": 3,
+      "prix": 8999,
+      "devise": "EUR",
+      "images": [
+        "/images/xv950-1.jpg",
+        "/images/xv950-2.jpg",
+        "/images/xv950-3.jpg"
+      ],
+      "categorie": "Custom",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Bobber / Custom",
+        "couleurs": [
+          "Noir",
+          "Gris Silver"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "942 cc",
+        "puissance": "54 ch",
+        "poids": "252 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "vmax",
+      "reference": "VMAX-2024",
+      "nom": "Yamaha VMAX",
+      "description": "La Yamaha VMAX est le muscle bike ultime, une icône absolue de la moto mondiale depuis 1985. Son V4 de 1679cc développe 200 chevaux avec un couple titanesque disponible dès 6500 tr/min. L'accélération est foudroyante, la présence sur la route est imposante. Ce chef-d'œuvre de technologie et de style représente le summum de l'excellence Yamaha dans la catégorie muscle bike.",
+      "stock": 1,
+      "prix": 24999,
+      "devise": "EUR",
+      "images": [
+        "/images/vmax-1.jpg",
+        "/images/vmax-2.jpg",
+        "/images/vmax-3.jpg"
+      ],
+      "categorie": "Custom",
+      "caracteristiques": {
+        "sexe": "Homme",
+        "type": "Muscle Bike",
+        "couleurs": [
+          "Noir",
+          "Gris Gun Metal"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "1679 cc",
+        "puissance": "200 ch",
+        "poids": "310 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "niken-gt",
+      "reference": "NIKENGT-2024",
+      "nom": "Yamaha Niken GT",
+      "description": "La Yamaha Niken GT est une moto unique à trois roues qui révolutionne le concept de sport touring. Son train avant double roue breveté LMW offre une adhérence et une stabilité incomparables, tout en conservant les sensations de pilotage d'une moto classique. Le triple cylindres 847cc assure des performances dynamiques, tandis que les équipements GT incluent les valises latérales de série.",
+      "stock": 2,
+      "prix": 17999,
+      "devise": "EUR",
+      "images": [
+        "/images/niken-gt-1.jpg",
+        "/images/niken-gt-2.jpg",
+        "/images/niken-gt-3.jpg"
+      ],
+      "categorie": "Sport Touring",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "3 roues / Sport Touring",
+        "couleurs": [
+          "Noir",
+          "Gris"
+        ],
+        "permis": [
+          "A"
+        ],
+        "cylindree": "847 cc",
+        "puissance": "115 ch",
+        "poids": "263 kg",
+        "annee": 2024
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produit — YSHOP3</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Y<span>SHOP</span>3</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Catalogue</a>
+        <a href="favorites.html" class="nav-link">Favoris <span class="badge" id="badge-favoris">0</span></a>
+        <a href="cart.html" class="nav-link">Panier <span class="badge" id="badge-panier">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="product-layout">
+
+    <!-- Colonne gauche : carrousel -->
+    <div class="product-gallery">
+      <div class="carousel">
+        <button class="carousel-btn prev" id="carousel-prev">&#8249;</button>
+        <div class="carousel-track" id="carousel-track"></div>
+        <button class="carousel-btn next" id="carousel-next">&#8250;</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <!-- Colonne droite : infos produit -->
+    <div class="product-info">
+      <a href="index.html" class="back-link">← Retour au catalogue</a>
+
+      <span class="product-categorie" id="product-categorie"></span>
+      <h1 class="product-nom" id="product-nom">Chargement...</h1>
+      <p class="product-prix" id="product-prix"></p>
+
+      <div class="stock-indicator" id="stock-indicator"></div>
+
+      <!-- Description -->
+      <div class="product-description">
+        <p class="description-text" id="description-text"></p>
+        <button class="btn-lire-plus" id="btn-lire-plus" style="display:none">Lire la suite</button>
+      </div>
+
+      <!-- Couleurs -->
+      <div class="product-section">
+        <p class="section-label">Couleur</p>
+        <div class="couleurs-selector" id="couleurs-selector"></div>
+      </div>
+
+      <!-- Caractéristiques -->
+      <div class="product-section">
+        <p class="section-label">Caractéristiques</p>
+        <table class="carac-table" id="carac-table"></table>
+      </div>
+
+      <!-- Ajouter au panier -->
+      <div class="add-to-cart-bar">
+        <div class="quantity-selector">
+          <button class="qty-btn" id="qty-minus">−</button>
+          <span class="qty-value" id="qty-value">1</span>
+          <button class="qty-btn" id="qty-plus">+</button>
+        </div>
+        <button class="btn-add-cart" id="btn-add-cart">Ajouter au panier</button>
+        <button class="btn-fav" id="btn-fav" title="Ajouter aux favoris">♡</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Produits similaires -->
+  <section class="similar-section">
+    <h2 class="similar-title">Produits similaires</h2>
+    <div class="products-grid" id="similar-grid"></div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 YSHOP3 — Tous droits réservés</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>
