@@ -8,13 +8,9 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-
-// Servir les fichiers statiques du frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
-
-// Routes API
 app.use('/api/produits', produitsRouter);
 
-app.listen(PORT, () => {
-  console.log(`YSHOP3 démarré sur http://localhost:${PORT}`);
+app.listen(PORT, function() {
+  console.log('Serveur lancé sur http://localhost:' + PORT);
 });

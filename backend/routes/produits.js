@@ -5,44 +5,60 @@ const path = require('path');
 const router = express.Router();
 const dataPath = path.join(__dirname, '../data/products.json');
 
-// Lit et retourne les données du fichier JSON
+// Lire le fichier JSON et retourner les données
 function lireData() {
-  return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const contenu = fs.readFileSync(dataPath, 'utf8');
+  return JSON.parse(contenu);
 }
 
-// Écrit les données dans le fichier JSON
-function ecrireData(data) {
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf8');
+// Sauvegarder les données dans le fichier JSON
+function sauvegarderData(data) {
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 }
 
-// GET /api/produits — récupère tous les produits
-router.get('/', (req, res) => {
+// GET /api/produits — retourne tous les produits
+router.get('/', function(req, res) {
   const data = lireData();
   res.json(data);
 });
 
-// GET /api/produits/:id — récupère un produit par son identifiant
-router.get('/:id', (req, res) => {
+// GET /api/produits/:id — retourne un produit selon son id
+router.get('/:id', function(req, res) {
   const data = lireData();
-  const produit = data.produits.find(p => p.id === req.params.id);
-  if (!produit) return res.status(404).json({ message: 'Produit non trouvé' });
-  res.json(produit);
+  let produitTrouve = null;
+
+  for (let i = 0; i < data.produits.length; i++) {
+    if (data.produits[i].id === req.params.id) {
+      produitTrouve = data.produits[i];
+    }
+  }
+
+  if (produitTrouve === null) {
+    res.status(404).json({ message: 'Produit non trouvé' });
+  } else {
+    res.json(produitTrouve);
+  }
 });
 
 // PUT /api/produits/:id/stock — met à jour le stock d'un produit
-router.put('/:id/stock', (req, res) => {
+router.put('/:id/stock', function(req, res) {
   const data = lireData();
-  const index = data.produits.findIndex(p => p.id === req.params.id);
-  if (index === -1) return res.status(404).json({ message: 'Produit non trouvé' });
+  const nouvelleQuantite = req.body.quantite;
+  let indexTrouve = -1;
 
-  const { quantite } = req.body;
-  if (typeof quantite !== 'number' || quantite < 0) {
-    return res.status(400).json({ message: 'Quantité invalide' });
+  for (let i = 0; i < data.produits.length; i++) {
+    if (data.produits[i].id === req.params.id) {
+      indexTrouve = i;
+    }
   }
 
-  data.produits[index].stock = quantite;
-  ecrireData(data);
-  res.json(data.produits[index]);
+  if (indexTrouve === -1) {
+    res.status(404).json({ message: 'Produit non trouvé' });
+  } else {
+    data.produits[indexTrouve].stock = nouvelleQuantite;
+    sauvegarderData(data);
+    res.json(data.produits[indexTrouve]);
+  }
 });
 
 module.exports = router;

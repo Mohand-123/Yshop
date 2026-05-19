@@ -1,15 +1,15 @@
-// Initialise la page favoris
-document.addEventListener('DOMContentLoaded', () => {
+// Chargement de la page favoris
+document.addEventListener('DOMContentLoaded', function() {
   chargerFavoris();
   updateBadges();
 });
 
-// Récupère les ids des favoris depuis le localStorage
+// Récupère les ids des favoris
 function getFavoris() {
   return JSON.parse(localStorage.getItem('favoris') || '[]');
 }
 
-// Charge les données des produits favoris et les affiche
+// Charge et affiche les produits favoris
 async function chargerFavoris() {
   const ids = getFavoris();
   const grid = document.getElementById('favorites-grid');
@@ -19,76 +19,80 @@ async function chargerFavoris() {
     return;
   }
 
-  try {
-    const tous = await getAllProduits();
-    const favoris = tous.filter(p => ids.includes(p.id));
+  const tous = await getAllProduits();
+  const favoris = [];
 
-    if (favoris.length === 0) {
-      grid.innerHTML = '<p class="empty-msg">Vos favoris ne sont plus disponibles.</p>';
-      return;
+  for (let i = 0; i < tous.length; i++) {
+    if (ids.indexOf(tous[i].id) !== -1) {
+      favoris.push(tous[i]);
     }
+  }
 
-    grid.innerHTML = favoris.map(p => creerCarteFavoriHTML(p)).join('');
-  } catch (e) {
-    grid.innerHTML = '<p class="empty-msg">Impossible de charger les favoris.</p>';
+  grid.innerHTML = '';
+  for (let i = 0; i < favoris.length; i++) {
+    const p = favoris[i];
+    grid.innerHTML += '<div class="product-card">'
+      + '<div class="card-image-wrapper" onclick="window.location=\'product.html?id=' + p.id + '\'" style="cursor:pointer">'
+      + '<img class="card-img card-img-primary" src="' + p.images[0] + '" alt="' + p.nom + '" />'
+      + '<span class="card-categorie">' + p.categorie + '</span>'
+      + '</div>'
+      + '<div class="card-body" onclick="window.location=\'product.html?id=' + p.id + '\'" style="cursor:pointer">'
+      + '<p class="card-nom">' + p.nom + '</p>'
+      + '<p class="card-prix">' + formatPrix(p.prix) + '</p>'
+      + '</div>'
+      + '<div class="fav-card-actions">'
+      + '<button class="btn-fav-cart" onclick="ajouterAuPanier(\'' + p.id + '\', \'' + p.nom + '\', ' + p.prix + ', \'' + p.devise + '\', \'' + p.images[0] + '\', \'' + p.caracteristiques.couleurs[0] + '\')">Ajouter au panier</button>'
+      + '<button class="btn-fav-remove" onclick="supprimerFavori(\'' + p.id + '\')">✕</button>'
+      + '</div></div>';
   }
 }
 
-// Génère le HTML d'une carte favori avec boutons d'action
-function creerCarteFavoriHTML(p) {
-  return `
-    <div class="product-card">
-      <div class="card-image-wrapper" onclick="window.location='product.html?id=${p.id}'" style="cursor:pointer">
-        ${p.images[0]
-          ? `<img class="card-img card-img-primary" src="${p.images[0]}" alt="${p.nom}" loading="lazy" />`
-          : '<div class="no-image">Pas d\'image</div>'}
-        <span class="card-categorie">${p.categorie}</span>
-      </div>
-      <div class="card-body" onclick="window.location='product.html?id=${p.id}'" style="cursor:pointer">
-        <p class="card-nom">${p.nom}</p>
-        <p class="card-prix">${formatPrix(p.prix)}</p>
-      </div>
-      <div class="fav-card-actions">
-        <button class="btn-fav-cart" onclick="ajouterAuPanier('${p.id}', '${p.nom}', ${p.prix}, '${p.devise}', '${p.images[0] || ''}', '${p.caracteristiques.couleurs[0]}')">
-          Ajouter au panier
-        </button>
-        <button class="btn-fav-remove" onclick="supprimerFavori('${p.id}')">✕</button>
-      </div>
-    </div>`;
-}
-
-// Supprime un produit des favoris et recharge la liste
+// Supprime un favori
 function supprimerFavori(id) {
-  const favoris = getFavoris().filter(f => f !== id);
-  localStorage.setItem('favoris', JSON.stringify(favoris));
+  const favoris = getFavoris();
+  const newFavoris = [];
+  for (let i = 0; i < favoris.length; i++) {
+    if (favoris[i] !== id) newFavoris.push(favoris[i]);
+  }
+  localStorage.setItem('favoris', JSON.stringify(newFavoris));
   showToast('Retiré des favoris');
   chargerFavoris();
   updateBadges();
 }
 
-// Ajoute un favori directement au panier depuis la page favoris
+// Ajoute un favori au panier
 function ajouterAuPanier(id, nom, prix, devise, image, couleur) {
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
-  const existant = panier.find(item => item.id === id && item.couleur === couleur);
+  let trouve = false;
 
-  if (existant) {
-    existant.quantite += 1;
-  } else {
-    panier.push({ id, nom, prix, devise, image, couleur, quantite: 1 });
+  for (let i = 0; i < panier.length; i++) {
+    if (panier[i].id === id && panier[i].couleur === couleur) {
+      panier[i].quantite += 1;
+      trouve = true;
+    }
+  }
+
+  if (!trouve) {
+    panier.push({ id: id, nom: nom, prix: prix, devise: devise, image: image, couleur: couleur, quantite: 1 });
   }
 
   localStorage.setItem('panier', JSON.stringify(panier));
-  showToast(`${nom} ajouté au panier`, 'success');
+  showToast(nom + ' ajouté au panier');
   updateBadges();
 }
 
-// Met à jour les badges header
+// Met à jour les badges du header
 function updateBadges() {
-  const favCount = getFavoris().length;
-  const cartCount = JSON.parse(localStorage.getItem('panier') || '[]')
-    .reduce((s, i) => s + i.quantite, 0);
+  const favoris = getFavoris();
+  const panier = JSON.parse(localStorage.getItem('panier') || '[]');
+
+  let totalPanier = 0;
+  for (let i = 0; i < panier.length; i++) {
+    totalPanier += panier[i].quantite;
+  }
+
   const bFav = document.getElementById('badge-favoris');
   const bPanier = document.getElementById('badge-panier');
-  if (bFav) { bFav.textContent = favCount; bFav.dataset.count = favCount; }
-  if (bPanier) { bPanier.textContent = cartCount; bPanier.dataset.count = cartCount; }
+  if (bFav) { bFav.textContent = favoris.length; bFav.dataset.count = favoris.length; }
+  if (bPanier) { bPanier.textContent = totalPanier; bPanier.dataset.count = totalPanier; }
 }

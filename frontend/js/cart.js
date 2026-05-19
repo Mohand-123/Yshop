@@ -1,11 +1,11 @@
-// Initialise la page panier
-document.addEventListener('DOMContentLoaded', () => {
+// Chargement de la page panier
+document.addEventListener('DOMContentLoaded', function() {
   afficherPanier();
   updateBadges();
   document.getElementById('btn-checkout').addEventListener('click', commander);
 });
 
-// Lit le panier depuis le localStorage
+// Récupère le panier depuis le localStorage
 function getPanier() {
   return JSON.parse(localStorage.getItem('panier') || '[]');
 }
@@ -15,7 +15,7 @@ function sauvegarderPanier(panier) {
   localStorage.setItem('panier', JSON.stringify(panier));
 }
 
-// Affiche tous les articles du panier et le récapitulatif
+// Affiche les articles du panier
 function afficherPanier() {
   const panier = getPanier();
   const container = document.getElementById('cart-items');
@@ -24,50 +24,56 @@ function afficherPanier() {
   if (panier.length === 0) {
     container.innerHTML = '<p class="empty-msg">Votre panier est vide.</p>';
     btnCommander.disabled = true;
-    calculerTotal(panier);
+    document.getElementById('cart-sous-total').textContent = '0 €';
+    document.getElementById('cart-total').textContent = '0 €';
     return;
   }
 
   btnCommander.disabled = false;
-  container.innerHTML = panier.map(item => creerItemHTML(item)).join('');
-  calculerTotal(panier);
+  container.innerHTML = '';
+
+  let total = 0;
+  for (let i = 0; i < panier.length; i++) {
+    const item = panier[i];
+    const sousTotal = item.prix * item.quantite;
+    total += sousTotal;
+
+    container.innerHTML += '<div class="cart-item">'
+      + '<img class="cart-item-img" src="' + item.image + '" alt="' + item.nom + '" />'
+      + '<div>'
+      + '<p class="cart-item-nom">' + item.nom + '</p>'
+      + '<p class="cart-item-couleur">Couleur : ' + item.couleur + '</p>'
+      + '<p class="cart-item-prix">' + formatPrix(item.prix) + ' / unité</p>'
+      + '</div>'
+      + '<div class="cart-item-controls">'
+      + '<p class="cart-item-total">' + formatPrix(sousTotal) + '</p>'
+      + '<div class="cart-item-actions">'
+      + '<div class="quantity-selector">'
+      + '<button class="qty-btn" onclick="changerQuantite(\'' + item.id + '\', \'' + item.couleur + '\', -1)">−</button>'
+      + '<span class="qty-value">' + item.quantite + '</span>'
+      + '<button class="qty-btn" onclick="changerQuantite(\'' + item.id + '\', \'' + item.couleur + '\', 1)">+</button>'
+      + '</div>'
+      + '<button class="btn-remove" onclick="supprimerArticle(\'' + item.id + '\', \'' + item.couleur + '\')">Supprimer</button>'
+      + '</div></div></div>';
+  }
+
+  document.getElementById('cart-sous-total').textContent = formatPrix(total);
+  document.getElementById('cart-total').textContent = formatPrix(total);
 }
 
-// Génère le HTML d'un article du panier
-function creerItemHTML(item) {
-  const total = item.prix * item.quantite;
-  return `
-    <div class="cart-item" data-id="${item.id}" data-couleur="${item.couleur}">
-      ${item.image
-        ? `<img class="cart-item-img" src="${item.image}" alt="${item.nom}" />`
-        : '<div class="cart-item-img" style="background:var(--surface2)"></div>'}
-      <div>
-        <p class="cart-item-nom">${item.nom}</p>
-        <p class="cart-item-couleur">Couleur : ${item.couleur}</p>
-        <p class="cart-item-prix">${formatPrix(item.prix)} / unité</p>
-      </div>
-      <div class="cart-item-controls">
-        <p class="cart-item-total">${formatPrix(total)}</p>
-        <div class="cart-item-actions">
-          <div class="quantity-selector">
-            <button class="qty-btn" onclick="changerQuantite('${item.id}', '${item.couleur}', -1)">−</button>
-            <span class="qty-value">${item.quantite}</span>
-            <button class="qty-btn" onclick="changerQuantite('${item.id}', '${item.couleur}', 1)">+</button>
-          </div>
-          <button class="btn-remove" onclick="supprimerArticle('${item.id}', '${item.couleur}')">Supprimer</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-// Modifie la quantité d'un article (+1 ou -1), supprime si 0
+// Modifie la quantité d'un article
 function changerQuantite(id, couleur, delta) {
   const panier = getPanier();
-  const index = panier.findIndex(i => i.id === id && i.couleur === couleur);
-  if (index === -1) return;
 
-  panier[index].quantite += delta;
-  if (panier[index].quantite <= 0) panier.splice(index, 1);
+  for (let i = 0; i < panier.length; i++) {
+    if (panier[i].id === id && panier[i].couleur === couleur) {
+      panier[i].quantite += delta;
+      if (panier[i].quantite <= 0) {
+        panier.splice(i, 1);
+      }
+      break;
+    }
+  }
 
   sauvegarderPanier(panier);
   afficherPanier();
@@ -76,67 +82,62 @@ function changerQuantite(id, couleur, delta) {
 
 // Supprime un article du panier
 function supprimerArticle(id, couleur) {
-  const panier = getPanier().filter(i => !(i.id === id && i.couleur === couleur));
-  sauvegarderPanier(panier);
+  const panier = getPanier();
+  const nouveauPanier = [];
+
+  for (let i = 0; i < panier.length; i++) {
+    if (panier[i].id !== id || panier[i].couleur !== couleur) {
+      nouveauPanier.push(panier[i]);
+    }
+  }
+
+  sauvegarderPanier(nouveauPanier);
   afficherPanier();
   updateBadges();
-  showToast('Article retiré du panier');
+  showToast('Article supprimé du panier');
 }
 
-// Calcule et affiche les totaux du récapitulatif
-function calculerTotal(panier) {
-  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
-  document.getElementById('cart-sous-total').textContent = formatPrix(total);
-  document.getElementById('cart-total').textContent = formatPrix(total);
-}
-
-// Finalise la commande : met à jour les stocks et vide le panier
+// Valide la commande et met à jour les stocks
 async function commander() {
   const panier = getPanier();
   if (panier.length === 0) return;
 
+  document.getElementById('btn-checkout').textContent = 'Traitement...';
   document.getElementById('btn-checkout').disabled = true;
-  document.getElementById('btn-checkout').textContent = 'Traitement…';
 
-  try {
-    // Récupère les stocks actuels et vérifie la disponibilité
-    const produits = await getAllProduits();
-    for (const item of panier) {
-      const produit = produits.find(p => p.id === item.id);
-      if (!produit || produit.stock < item.quantite) {
-        showToast(`Stock insuffisant pour ${item.nom}`);
-        document.getElementById('btn-checkout').disabled = false;
-        document.getElementById('btn-checkout').textContent = 'Commander';
-        return;
+  const produits = await getAllProduits();
+
+  for (let i = 0; i < panier.length; i++) {
+    const item = panier[i];
+    let produit = null;
+    for (let j = 0; j < produits.length; j++) {
+      if (produits[j].id === item.id) {
+        produit = produits[j];
       }
     }
-
-    // Met à jour le stock de chaque produit acheté
-    for (const item of panier) {
-      const produit = produits.find(p => p.id === item.id);
+    if (produit && produit.stock >= item.quantite) {
       await updateStock(item.id, produit.stock - item.quantite);
     }
-
-    localStorage.removeItem('panier');
-    showToast('Commande confirmée ! Merci pour votre achat.', 'success');
-    setTimeout(() => {
-      afficherPanier();
-      updateBadges();
-    }, 500);
-
-  } catch (e) {
-    showToast('Erreur lors de la commande, réessayez.');
-    document.getElementById('btn-checkout').disabled = false;
-    document.getElementById('btn-checkout').textContent = 'Commander';
   }
+
+  localStorage.removeItem('panier');
+  showToast('Commande confirmée ! Merci.');
+  afficherPanier();
+  updateBadges();
 }
 
-// Met à jour les badges header
+// Met à jour les badges du header
 function updateBadges() {
-  const favCount = JSON.parse(localStorage.getItem('favoris') || '[]').length;
-  const cartCount = getPanier().reduce((s, i) => s + i.quantite, 0);
+  const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
+  const panier = getPanier();
+
+  let totalPanier = 0;
+  for (let i = 0; i < panier.length; i++) {
+    totalPanier += panier[i].quantite;
+  }
+
   const bFav = document.getElementById('badge-favoris');
   const bPanier = document.getElementById('badge-panier');
-  if (bFav) { bFav.textContent = favCount; bFav.dataset.count = favCount; }
-  if (bPanier) { bPanier.textContent = cartCount; bPanier.dataset.count = cartCount; }
+  if (bFav) { bFav.textContent = favoris.length; bFav.dataset.count = favoris.length; }
+  if (bPanier) { bPanier.textContent = totalPanier; bPanier.dataset.count = totalPanier; }
 }
