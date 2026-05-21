@@ -30,7 +30,7 @@ Ouvrir dans le navigateur : http://localhost:3000
 
 - 🔍 **Les filtres combinés** quand on coche plusieurs filtres en même temps ça marchait pas, fallait bien gérer les tableaux et les conditions
 
-- 🌐 **Le déploiement en ligne** GitHub Pages ne supporte pas Node.js donc j'ai dû utiliser Render pour héberger le backend et rendre le site accessible publiquement
+- 🌐 **Rendre le site accessible en ligne** GitHub Pages ne supporte pas Node.js, j'ai essayé plusieurs solutions puis j'ai utilisé Cloudflare Tunnel avec la commande `npx cloudflared tunnel --url http://localhost:3000` qui crée un lien public sans compte ni installation, le site est alors accessible depuis n'importe quel appareil
 
 ## ✅ Ce que fait le site
 
