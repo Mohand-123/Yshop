@@ -2,7 +2,7 @@
 
 Site e-commerce de motos Yamaha fait en HTML CSS JS et Express.js.
 
-## 🚀 Comment lancer le projet
+## 🚀 Option 1 — Lancer avec le serveur (version complète)
 
 Installer les dépendances :
 ```
@@ -15,6 +15,17 @@ npm start
 ```
 
 Ouvrir dans le navigateur : http://localhost:3000
+
+> ✅ Version complète avec API, gestion des stocks en temps réel.
+
+## ⚡ Option 2 — Lancer avec VS Code Live Server (version rapide)
+
+1. Installer l'extension **Live Server** dans VS Code
+2. Ouvrir le dossier `YSHOPPP` dans VS Code
+3. Cliquer sur **"Go Live"** en bas à droite
+4. Le site s'ouvre automatiquement sur http://127.0.0.1:5500
+
+> ✅ Fonctionne sans Node.js. Parfait pour une démo rapide ou partager avec quelqu'un.
 
 ## 🌐 Rendre le site accessible publiquement
 
