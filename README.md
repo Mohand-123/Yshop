@@ -30,6 +30,8 @@ Ouvrir dans le navigateur : http://localhost:3000
 
 - 🔍 **Les filtres combinés** quand on coche plusieurs filtres en même temps ça marchait pas, fallait bien gérer les tableaux et les conditions
 
+- 🌐 **Le déploiement en ligne** GitHub Pages ne supporte pas Node.js donc j'ai dû utiliser Render pour héberger le backend et rendre le site accessible publiquement
+
 ## ✅ Ce que fait le site
 
 - 🗂️ Afficher un catalogue de motos avec filtres et tri
