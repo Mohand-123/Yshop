@@ -1,35 +1,43 @@
-// variables globales de la page produit
+// Variables globales utilisées sur la page produit
 let produitActuel = null;
 let indexCarousel = 0;
 let quantite = 1;
 let couleurSelectionnee = '';
 let descriptionAffichee = false;
 
+// Quand la page est chargée, on récupère l'id dans l'URL et on charge le produit
 document.addEventListener('DOMContentLoaded', function() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
+
+  // Si pas d'id → retour à l'accueil
   if (!id) {
     window.location = 'index.html';
     return;
   }
+
   chargerProduit(id);
   updateBadges();
 });
 
-// charge le produit depuis l'api avec l'id dans l'url
+// Charge le produit depuis l'API grâce à son id
 async function chargerProduit(id) {
   produitActuel = await getProduit(id);
   afficherProduit(produitActuel);
   chargerSimilaires(produitActuel);
 }
 
-// affiche toutes les infos du produit dans la page
+// Affiche toutes les infos du produit dans la page
 function afficherProduit(p) {
+  // Mise à jour du titre de la page
   document.title = p.nom + ' — YSHOPPP';
+
+  // Infos principales
   document.getElementById('product-categorie').textContent = p.categorie;
   document.getElementById('product-nom').textContent = p.nom;
   document.getElementById('product-prix').textContent = formatPrix(p.prix);
 
+  // Gestion du stock
   const stockEl = document.getElementById('stock-indicator');
   if (p.stock <= 0) {
     stockEl.textContent = 'Rupture de stock';
@@ -43,13 +51,17 @@ function afficherProduit(p) {
     stockEl.className = 'stock-indicator en-stock';
   }
 
+  // Construction du carrousel d'images
   construireCarousel(p.images);
 
+  // Gestion de la description (réduite / complète)
   const descEl = document.getElementById('description-text');
   const btnLire = document.getElementById('btn-lire-plus');
+
   if (p.description.length > 150) {
     descEl.textContent = p.description.substring(0, 150) + '...';
     btnLire.style.display = 'block';
+
     btnLire.addEventListener('click', function() {
       if (descriptionAffichee) {
         descEl.textContent = p.description.substring(0, 150) + '...';
@@ -65,15 +77,19 @@ function afficherProduit(p) {
     descEl.textContent = p.description;
   }
 
+  // Sélection des couleurs
   couleurSelectionnee = p.caracteristiques.couleurs[0];
   const couleursEl = document.getElementById('couleurs-selector');
   couleursEl.innerHTML = '';
+
   for (let i = 0; i < p.caracteristiques.couleurs.length; i++) {
     const couleur = p.caracteristiques.couleurs[i];
     const actif = i === 0 ? 'active' : '';
-    couleursEl.innerHTML += '<button class="couleur-btn ' + actif + '" onclick="selectionnerCouleur(\'' + couleur + '\', this)">' + couleur + '</button>';
+    couleursEl.innerHTML +=
+      '<button class="couleur-btn ' + actif + '" onclick="selectionnerCouleur(\'' + couleur + '\', this)">' + couleur + '</button>';
   }
 
+  // Tableau des caractéristiques
   const table = document.getElementById('carac-table');
   table.innerHTML = '';
   table.innerHTML += '<tr><td>Type</td><td>' + p.caracteristiques.type + '</td></tr>';
@@ -84,15 +100,19 @@ function afficherProduit(p) {
   table.innerHTML += '<tr><td>Année</td><td>' + p.caracteristiques.annee + '</td></tr>';
   table.innerHTML += '<tr><td>Sexe</td><td>' + p.caracteristiques.sexe + '</td></tr>';
 
+  // Bouton ajouter au panier
   document.getElementById('btn-add-cart').addEventListener('click', function() {
     ajouterAuPanier(p);
   });
+
+  // Gestion de la quantité
   document.getElementById('qty-minus').addEventListener('click', function() {
     if (quantite > 1) {
       quantite--;
       document.getElementById('qty-value').textContent = quantite;
     }
   });
+
   document.getElementById('qty-plus').addEventListener('click', function() {
     if (quantite < p.stock) {
       quantite++;
@@ -100,20 +120,23 @@ function afficherProduit(p) {
     }
   });
 
+  // Gestion du bouton favori
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const btnFav = document.getElementById('btn-fav');
+
   if (favoris.indexOf(p.id) !== -1) {
     btnFav.textContent = '♥';
     btnFav.classList.add('active');
   } else {
     btnFav.textContent = '♡';
   }
+
   btnFav.addEventListener('click', function() {
     toggleFavori(p.id, btnFav);
   });
 }
 
-// crée le carrousel avec toutes les images du produit
+// Construit le carrousel d'images du produit
 function construireCarousel(images) {
   const track = document.getElementById('carousel-track');
   const dots = document.getElementById('carousel-dots');
@@ -121,31 +144,40 @@ function construireCarousel(images) {
   track.innerHTML = '';
   dots.innerHTML = '';
 
+  // Ajout des images + des petits points
   for (let i = 0; i < images.length; i++) {
     track.innerHTML += '<div class="carousel-slide"><img src="' + images[i] + '" alt="photo" /></div>';
+
     const actif = i === 0 ? 'active' : '';
     dots.innerHTML += '<span class="dot ' + actif + '" onclick="allerSlide(' + i + ')"></span>';
   }
 
+  // Boutons précédent / suivant
   document.getElementById('carousel-prev').addEventListener('click', function() {
     allerSlide(indexCarousel - 1);
   });
+
   document.getElementById('carousel-next').addEventListener('click', function() {
     allerSlide(indexCarousel + 1);
   });
 }
 
-// passe à l'image suivante ou précédente dans le carrousel
+// Change l'image affichée dans le carrousel
 function allerSlide(index) {
   const slides = document.querySelectorAll('.carousel-slide');
   if (slides.length === 0) return;
 
+  // Boucle infinie (si on dépasse, on revient au début)
   if (index < 0) index = slides.length - 1;
   if (index >= slides.length) index = 0;
 
   indexCarousel = index;
-  document.getElementById('carousel-track').style.transform = 'translateX(-' + indexCarousel * 100 + '%)';
 
+  // Déplacement horizontal du carrousel
+  document.getElementById('carousel-track').style.transform =
+    'translateX(-' + indexCarousel * 100 + '%)';
+
+  // Mise à jour des points
   const dotsList = document.querySelectorAll('.dot');
   for (let i = 0; i < dotsList.length; i++) {
     dotsList[i].classList.remove('active');
@@ -153,20 +185,24 @@ function allerSlide(index) {
   dotsList[indexCarousel].classList.add('active');
 }
 
+// Sélectionne une couleur
 function selectionnerCouleur(couleur, btn) {
   couleurSelectionnee = couleur;
+
   const boutons = document.querySelectorAll('.couleur-btn');
   for (let i = 0; i < boutons.length; i++) {
     boutons[i].classList.remove('active');
   }
+
   btn.classList.add('active');
 }
 
-// ajoute le produit au panier dans le localstorage
+// Ajoute le produit au panier dans le localStorage
 function ajouterAuPanier(p) {
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
   let trouve = false;
 
+  // Si le produit existe déjà → on augmente la quantité
   for (let i = 0; i < panier.length; i++) {
     if (panier[i].id === p.id && panier[i].couleur === couleurSelectionnee) {
       panier[i].quantite += quantite;
@@ -174,6 +210,7 @@ function ajouterAuPanier(p) {
     }
   }
 
+  // Sinon → on l'ajoute
   if (!trouve) {
     panier.push({
       id: p.id,
@@ -191,6 +228,7 @@ function ajouterAuPanier(p) {
   updateBadges();
 }
 
+// Ajoute ou retire un favori
 function toggleFavori(id, btn) {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const index = favoris.indexOf(id);
@@ -211,7 +249,7 @@ function toggleFavori(id, btn) {
   updateBadges();
 }
 
-// charge les produits de la même catégorie pour les afficher en bas
+// Charge jusqu'à 4 produits similaires (même catégorie)
 async function chargerSimilaires(produit) {
   const tous = await getAllProduits();
   const similaires = [];
@@ -224,15 +262,19 @@ async function chargerSimilaires(produit) {
   }
 
   const grid = document.getElementById('similar-grid');
+
   if (similaires.length === 0) {
     grid.innerHTML = '<p class="empty-msg">Aucun produit similaire.</p>';
     return;
   }
 
+  // Affichage des cartes similaires
   grid.innerHTML = '';
   for (let i = 0; i < similaires.length; i++) {
     const p = similaires[i];
-    grid.innerHTML += '<div class="product-card" onclick="window.location=\'product.html?id=' + p.id + '\'">'
+
+    grid.innerHTML +=
+      '<div class="product-card" onclick="window.location=\'product.html?id=' + p.id + '\'">'
       + '<div class="card-image-wrapper"><img class="card-img card-img-primary" src="' + p.images[0] + '" alt="' + p.nom + '" />'
       + '<span class="card-categorie">' + p.categorie + '</span></div>'
       + '<div class="card-body"><p class="card-nom">' + p.nom + '</p>'
@@ -240,6 +282,7 @@ async function chargerSimilaires(produit) {
   }
 }
 
+// Met à jour les badges (favoris + panier)
 function updateBadges() {
   const favoris = JSON.parse(localStorage.getItem('favoris') || '[]');
   const panier = JSON.parse(localStorage.getItem('panier') || '[]');
@@ -251,6 +294,13 @@ function updateBadges() {
 
   const bFav = document.getElementById('badge-favoris');
   const bPanier = document.getElementById('badge-panier');
-  if (bFav) { bFav.textContent = favoris.length; bFav.dataset.count = favoris.length; }
-  if (bPanier) { bPanier.textContent = totalPanier; bPanier.dataset.count = totalPanier; }
+
+  if (bFav) {
+    bFav.textContent = favoris.length;
+    bFav.dataset.count = favoris.length;
+  }
+  if (bPanier) {
+    bPanier.textContent = totalPanier;
+    bPanier.dataset.count = totalPanier;
+  }
 }
