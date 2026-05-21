@@ -16,6 +16,15 @@ npm start
 
 Ouvrir dans le navigateur : http://localhost:3000
 
+## 🌐 Rendre le site accessible publiquement
+
+Pour partager le site avec quelqu'un sans déploiement :
+```
+npx cloudflared tunnel --url http://localhost:3000
+```
+
+Un lien public est généré dans le terminal, il suffit de le partager.
+
 ## 🛠️ Technologies utilisées
 
 - 🎨 Frontend : HTML, CSS, JavaScript
