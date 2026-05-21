@@ -31,18 +31,46 @@
     <div class="hero-glow"></div>
   </section>
 
-  <section class="video-section">
-    <div class="video-inner">
-      <p class="video-label">L'univers Yamaha</p>
-      <h2 class="video-title">Ressentez la <span>différence</span></h2>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/9Lzrd7AwkSQ?rel=0&modestbranding=1"
-          title="Yamaha Motor"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+  <!-- Bandeau défilant -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span>YZF-R1</span><span>•</span>
+      <span>MT-09</span><span>•</span>
+      <span>Ténéré 700</span><span>•</span>
+      <span>XSR900</span><span>•</span>
+      <span>VMAX</span><span>•</span>
+      <span>YZ450F</span><span>•</span>
+      <span>Tracer 9 GT</span><span>•</span>
+      <span>WR450F</span><span>•</span>
+      <span>YZF-R1</span><span>•</span>
+      <span>MT-09</span><span>•</span>
+      <span>Ténéré 700</span><span>•</span>
+      <span>XSR900</span><span>•</span>
+      <span>VMAX</span><span>•</span>
+      <span>YZ450F</span><span>•</span>
+      <span>Tracer 9 GT</span><span>•</span>
+      <span>WR450F</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <p class="stat-number" data-target="20">0</p>
+        <p class="stat-label">Motos disponibles</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number" data-target="8">0</p>
+        <p class="stat-label">Catégories</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number" data-target="2024">0</p>
+        <p class="stat-label">Collection</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number" data-target="100">0</p>
+        <p class="stat-label">% Satisfaction</p>
       </div>
     </div>
   </section>
@@ -97,5 +125,20 @@
 
   <script src="js/api.js"></script>
   <script src="js/catalogue.js"></script>
+  <script>
+    // animation compteur pour les stats
+    var numbers = document.querySelectorAll('.stat-number');
+    numbers.forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-target'));
+      var duration = 1800;
+      var step = target / (duration / 16);
+      var current = 0;
+      var timer = setInterval(function() {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString('fr-FR');
+      }, 16);
+    });
+  </script>
 </body>
 </html>
