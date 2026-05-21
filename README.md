@@ -27,14 +27,6 @@ Ouvrir dans le navigateur : http://localhost:3000
 
 > ✅ Fonctionne sans Node.js. Parfait pour une démo rapide ou partager avec quelqu'un.
 
-## 🌐 Rendre le site accessible publiquement
-
-Pour partager le site avec quelqu'un sans déploiement :
-```
-npx cloudflared tunnel --url http://localhost:3000
-```
-
-Un lien public est généré dans le terminal, il suffit de le partager.
 
 ## 🛠️ Technologies utilisées
 
