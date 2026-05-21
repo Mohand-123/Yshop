@@ -487,69 +487,6 @@
       }
     },
     {
-      "id": "mt-07",
-      "reference": "MT-07-2024",
-      "nom": "Yamaha MT-07",
-      "description": "La Yamaha MT-07 est la naked accessible par excellence, alliant plaisir de conduite et polyvalence au quotidien. Son bicylindre parallèle 689cc offre un couple généreux et progressif, parfaitement adapté à une utilisation urbaine et sportive. Son poids contenu et sa selle basse la rendent accessible à de nombreux gabarits. Elle est idéale comme première grosse cylindrée pour progresser.",
-      "stock": 8,
-      "prix": 8299,
-      "devise": "EUR",
-      "images": ["/images/mt-07-1.jpg", "/images/mt-07-2.jpg", "/images/mt-07-3.jpg"],
-      "categorie": "Naked",
-      "caracteristiques": {
-        "sexe": "Unisexe",
-        "type": "Naked",
-        "couleurs": ["Bleu Petrol", "Noir", "Gris Matte"],
-        "permis": ["A"],
-        "cylindree": "689 cc",
-        "puissance": "73 ch",
-        "poids": "184 kg",
-        "annee": 2024
-      }
-    },
-    {
-      "id": "mt-09",
-      "reference": "MT-09-2024",
-      "nom": "Yamaha MT-09",
-      "description": "La Yamaha MT-09 est la naked la plus vendue d'Europe. Son triple cylindres 890cc ultra-caractériel offre des sensations uniques avec un couple disponible à tout régime. Légère, agile et diablement efficace, elle séduit aussi bien les débutants que les pilotes confirmés. Son électronique avec 3 cartographies moteur s'adapte parfaitement à tous les styles de conduite sur route.",
-      "stock": 6,
-      "prix": 10999,
-      "devise": "EUR",
-      "images": ["/images/mt-09-1.jpg", "/images/mt-09-2.jpg", "/images/mt-09-3.jpg"],
-      "categorie": "Naked",
-      "caracteristiques": {
-        "sexe": "Unisexe",
-        "type": "Naked",
-        "couleurs": ["Cyan Storm", "Noir Midnight", "Gris"],
-        "permis": ["A"],
-        "cylindree": "890 cc",
-        "puissance": "119 ch",
-        "poids": "193 kg",
-        "annee": 2024
-      }
-    },
-    {
-      "id": "mt-10",
-      "reference": "MT-10-2024",
-      "nom": "Yamaha MT-10",
-      "description": "La Yamaha MT-10 est le porte-drapeau de la famille MT, le Dark Side of Japan. Animée par le moteur de la R1 en version streetfighter, elle délivre 166 chevaux dans un châssis nerveux et agile. Son design anguleux et menaçant avec ses phares LED iconiques en fait une présence absolue sur la route. L'électronique complète assure la maîtrise totale de cette puissance brute.",
-      "stock": 3,
-      "prix": 16999,
-      "devise": "EUR",
-      "images": ["/images/mt-10-1.jpg", "/images/mt-10-2.jpg", "/images/mt-10-3.jpg"],
-      "categorie": "Naked",
-      "caracteristiques": {
-        "sexe": "Homme",
-        "type": "Naked",
-        "couleurs": ["Cyan Storm", "Noir Midnight", "Gris Storm"],
-        "permis": ["A"],
-        "cylindree": "998 cc",
-        "puissance": "166 ch",
-        "poids": "212 kg",
-        "annee": 2024
-      }
-    },
-    {
       "id": "tracer-9-gt",
       "reference": "TRACER9GT-2024",
       "nom": "Yamaha Tracer 9 GT",
@@ -557,16 +494,89 @@
       "stock": 4,
       "prix": 14999,
       "devise": "EUR",
-      "images": ["/images/mt-09-1.jpg", "/images/mt-09-2.jpg", "/images/mt-09-3.jpg"],
+      "images": [
+        "/images/mt-09-1.jpg",
+        "/images/mt-09-2.jpg",
+        "/images/mt-09-3.jpg"
+      ],
       "categorie": "Sport Touring",
       "caracteristiques": {
         "sexe": "Unisexe",
         "type": "Sport Tourer",
-        "couleurs": ["Gris Iconic", "Bleu", "Noir"],
-        "permis": ["A"],
+        "couleurs": [
+          "Gris Iconic",
+          "Bleu",
+          "Noir"
+        ],
+        "permis": [
+          "A"
+        ],
         "cylindree": "890 cc",
         "puissance": "119 ch",
         "poids": "220 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "mt-03",
+      "reference": "MT-03-2024",
+      "nom": "Yamaha MT-03",
+      "description": "La Yamaha MT-03 est la street bike accessible par excellence, parfaite pour débuter ou pour les trajets urbains quotidiens. Son bicylindre 321cc offre des sensations sportives dans un format léger et maniable. Son design dynamique inspiré de ses grandes sœurs en fait une moto immédiatement reconnaissable dans la circulation. Idéale pour le permis A2, elle séduit par sa praticité et son caractère.",
+      "stock": 9,
+      "prix": 5699,
+      "devise": "EUR",
+      "images": ["/images/mt-03-1.jpg", "/images/mt-03-2.jpg", "/images/mt-03-3.jpg"],
+      "categorie": "Streetfighter",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Streetfighter",
+        "couleurs": ["Cyan Storm", "Noir", "Gris"],
+        "permis": ["A2", "A"],
+        "cylindree": "321 cc",
+        "puissance": "42 ch",
+        "poids": "168 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "tracer-7",
+      "reference": "TRACER7-2024",
+      "nom": "Yamaha Tracer 7",
+      "description": "La Yamaha Tracer 7 est le sport-tourer accessible de la gamme, alliant confort de voyage et dynamisme sur route. Son bicylindre 689cc issu de la gamme sport offre un couple généreux et une consommation raisonnable pour les longs trajets. Équipée d'une bulle réglable et d'une position de conduite confortable, elle est idéale pour explorer les routes sans se fatiguer tout en gardant le sourire.",
+      "stock": 5,
+      "prix": 9499,
+      "devise": "EUR",
+      "images": ["/images/mt-07-1.jpg", "/images/mt-07-2.jpg", "/images/mt-07-3.jpg"],
+      "categorie": "Sport Touring",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Sport Tourer",
+        "couleurs": ["Gris", "Bleu", "Noir"],
+        "permis": ["A"],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "204 kg",
+        "annee": 2024
+      }
+    },
+    {
+      "id": "yzf-r7",
+      "reference": "YZF-R7-2024",
+      "nom": "Yamaha YZF-R7",
+      "description": "La Yamaha YZF-R7 est la sportive accessible de nouvelle génération, conçue pour allier performances de circuit et utilisation routière au quotidien. Son bicylindre 689cc offre une puissance linéaire et exploitable, parfaite pour progresser en piste comme sur route. Son carénage aérodynamique inspiré du MotoGP et sa position de conduite sportive en font une moto aussi belle que performante.",
+      "stock": 4,
+      "prix": 8999,
+      "devise": "EUR",
+      "images": ["/images/yzf-r6-1.jpg", "/images/yzf-r6-2.jpg", "/images/yzf-r6-3.jpg"],
+      "categorie": "Sport",
+      "caracteristiques": {
+        "sexe": "Unisexe",
+        "type": "Sportive",
+        "couleurs": ["Bleu Racing", "Noir", "Blanc"],
+        "permis": ["A"],
+        "cylindree": "689 cc",
+        "puissance": "73 ch",
+        "poids": "188 kg",
         "annee": 2024
       }
     }
