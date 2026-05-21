@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Lancer Yamaha Store",
+      "program": "${workspaceFolder}/backend/server.js",
+      "preLaunchTask": "npm install",
+      "env": {},
+      "console": "integratedTerminal"
+    }
+  ]
+}
